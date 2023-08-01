@@ -25,7 +25,7 @@ module.exports = {
     ],
     'linebreak-style': [
       'error',
-      'windows'
+      'unix'
     ],
     'quotes': [
       'error',
@@ -44,5 +44,10 @@ module.exports = {
     ],
     'no-console': 0,
     'react/prop-types': 0,
+  },
+  'settings': {
+    'react': {
+      'version': 'detect'
+    }
   }
 }
