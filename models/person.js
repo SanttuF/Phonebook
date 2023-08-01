@@ -4,6 +4,9 @@ mongoose.set('strictQuery', false)
 
 const url = process.env.MONGODB_URI
 
+console.log(url)
+console.log(process.env.PORT)
+
 mongoose
   .connect(url)
   .then(() => {

@@ -11,9 +11,10 @@
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
     "lint": "eslint .",
     "cypress:open": "cypress open",
+    "install:pipeline": "npm install && cd ./Frontend && npm install",
     "build:pipeline": "rm -rf build && cd ./Frontend && npm run build && cp -r build ..",
     "lint:pipeline": "npm run lint && cd ./Frontend && npm run lint",
-    "test:pipeline": "cd ./Frontend && npm run test",
+    "test:pipeline": "npm test && cd ./Frontend && npm test",
     "test:e2e": "cypress run"
   },
   "author": "",
