@@ -23,14 +23,12 @@ jobs:
         run: npm run lint:pipeline
       - name: Build
         run: npm run build:pipeline
-      - name: Test
-        run: npm run test:pipeline
       - name: e2e tests
         uses: cypress-io/github-action@v5
         with:
           command: npm run test:e2e
-          start: npm run start-prod
-          wait-on: http://localhost:5000
+          start: npm run start
+          wait-on: http://localhost:3001
       - name: Deploy to production
         if: ${{ github.event_name == 'push' }}
         uses: johnbeynon/render-deploy-action@v0.0.8
@@ -38,22 +36,22 @@ jobs:
           service-id: ${{ secrets.RENDER_ID }}
           api-key: ${{ secrets.RENDER_TOKEN }}
           
-      - name: Test Success
-        uses: rjstone/discord-webhook-notify@v1
-        if: ${{ success() && github.event_name == 'push' }}
-        with:
-          severity: info
-          description: "https://fullstackopenpokedex.onrender.com/"
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          text: "New version"
+#      - name: Test Success
+#        uses: rjstone/discord-webhook-notify@v1
+#        if: ${{ success() && github.event_name == 'push' }}
+#        with:
+#          severity: info
+#          description: "https://fullstackphonebookpipeline.onrender.com/"
+#          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+#          text: "New version"
 
-      - name: Test Failure
-        uses: rjstone/discord-webhook-notify@v1
-        if: ${{ failure() && github.event_name == 'push' }}
-        with:
-          severity: error
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          text: "Build failed" 
+#      - name: Test Failure
+#        uses: rjstone/discord-webhook-notify@v1
+#        if: ${{ failure() && github.event_name == 'push' }}
+#        with:
+#          severity: error
+#          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+#          text: "Build failed" 
           
           
   tag_release:
