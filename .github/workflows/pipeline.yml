@@ -29,7 +29,7 @@ jobs:
           command: npm run test:e2e
           start: npm start
           wait-on: http://localhost:3001
-          env: MONGODB_URI=${{vars.MONGODB_URI}},port=3001
+          env: MONGODB_URI=${{vars.MONGODB_URI}},PORT=3001
       - name: Deploy to production
         if: ${{ github.event_name == 'push' }}
         uses: johnbeynon/render-deploy-action@v0.0.8
