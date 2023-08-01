@@ -36,5 +36,5 @@ module.exports = {
     ],
     'no-console': 0,
   },
-'plugins': 'cypress'
+'plugins': ['cypress']
 }
