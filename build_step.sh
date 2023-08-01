@@ -2,7 +2,7 @@
 
 echo "Build script"
 
-npm install
+npm run install:pipeline
 
 echo "Install complete"
 
